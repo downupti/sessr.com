@@ -1,0 +1,160 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Logo from '../components/Logo.astro';
+---
+
+<Layout title="SESSR | Premium Cellular Longevity & Bio-tech Skincare">
+	<div class="noise-overlay"></div>
+
+    <nav>
+        <div class="logo">
+            <Logo height="40px" style="margin-right: 10px;" />
+            SESSR
+        </div>
+        <ul class="nav-links">
+            <li><a href="#science">SCIENCE</a></li>
+            <li><a href="#shop">SHOP</a></li>
+            <li><a href="#genome">THE GENOME</a></li>
+        </ul>
+        <div class="nav-meta">
+            <a href="#cart" class="cart-link">CART (0)</a>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <span class="eyebrow">BIO-TECH INNOVATION</span>
+                <h1>BIOENGINEERED<br><span class="italic">LUMINOSITY.</span></h1>
+                <p>Clinically perfected skincare through advanced genomic science and exosome delivery systems.</p>
+                <div class="hero-actions">
+                    <button class="cta-button primary">SHOP THE COLLECTION</button>
+                    <button class="cta-button secondary">THE SCIENCE</button>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="visual-container">
+                    <div class="droplet-container">
+                        <div class="droplet"></div>
+                        <div class="droplet-glow"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <span>SCROLL TO EXPLORE</span>
+                <div class="line"></div>
+            </div>
+        </section>
+
+        <section class="science-bridge" id="science">
+            <div class="section-header">
+                <span class="eyebrow">THE CORE TECHNOLOGY</span>
+                <h2>EXO-TECH™ DELIVERY</h2>
+            </div>
+            <div class="science-grid">
+                <div class="science-content">
+                    <p>Our proprietary exosome-based delivery system increases ingredient absorption by 300%. Unlike
+                        traditional skincare that sits on the surface, EXO-TECH™ mimics the skin's natural communication
+                        vesicles.</p>
+                    <ul class="science-bullets">
+                        <li>Deep Cellular Repair</li>
+                        <li>SIRT1 Gene Activation</li>
+                        <li>Mitochondrial Support</li>
+                    </ul>
+                </div>
+                <div class="science-visual">
+                    <div class="exosome-diagram">
+                        <div class="core"></div>
+                        <div class="ring"></div>
+                        <div class="rays"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="collection" id="shop">
+            <div class="section-header center">
+                <span class="eyebrow">THE COLLECTION</span>
+                <h2>FOUNDATIONAL REPAIR</h2>
+            </div>
+            <div class="product-grid">
+                <!-- Catalyst Serum -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <div class="bottle amber"></div>
+                    </div>
+                    <div class="product-info">
+                        <span class="tag">BEST SELLER</span>
+                        <h3>THE CATALYST</h3>
+                        <p>Exosome-encapsulated peptide complex for 24-hour cellular repair.</p>
+                        <div class="product-footer">
+                            <span class="price">$320.00</span>
+                            <button class="add-to-cart">ADD</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Blue Light Defense -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <div class="bottle chrome"></div>
+                    </div>
+                    <div class="product-info">
+                        <span class="tag">PROTECT</span>
+                        <h3>BLUE LIGHT DEFENSE</h3>
+                        <p>Digital shield neutralizing oxidative stress from high-energy visible light.</p>
+                        <div class="product-footer">
+                            <span class="price">$180.00</span>
+                            <button class="add-to-cart">ADD</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Circadian Night Oil -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <div class="bottle frosted"></div>
+                    </div>
+                    <div class="product-info">
+                        <span class="tag">REPAIR</span>
+                        <h3>CIRCADIAN NIGHT OIL</h3>
+                        <p>Synchronize repair cycles with melatonin derivatives and bio-lipids.</p>
+                        <div class="product-footer">
+                            <span class="price">$240.00</span>
+                            <button class="add-to-cart">ADD</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="logo">
+                    <Logo height="40px" style="margin-right: 10px;" />
+                    SESSR
+                </div>
+                <p>The Future of Skin, Preserved.</p>
+            </div>
+            <div class="footer-links">
+                <div class="link-group">
+                    <h4>SHOP</h4>
+                    <a href="#">Serums</a>
+                    <a href="#">Moisturizers</a>
+                    <a href="#">Kits</a>
+                </div>
+                <div class="link-group">
+                    <h4>ABOUT</h4>
+                    <a href="#">Our Story</a>
+                    <a href="#">Clinical Trials</a>
+                    <a href="#">Careers</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 SESSR BIOTECH. DEFINING CELLULAR LONGEVITY.</p>
+        </div>
+    </footer>
+</Layout>
