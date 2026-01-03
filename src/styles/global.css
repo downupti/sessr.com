@@ -90,15 +90,29 @@ nav {
     color: var(--text-color);
 }
 
-.nav-meta .cart-link {
+.nav-meta .cart-btn {
+    background: transparent;
     color: var(--text-color);
-    text-decoration: none;
-    font-size: 0.75rem;
-    letter-spacing: 1px;
     border: 1px solid var(--glass-border);
     padding: 0.5rem 1.2rem;
     border-radius: 20px;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+    font-family: var(--primary-font);
     transition: all 0.3s;
+}
+
+.nav-meta .cart-btn:hover {
+    background: var(--glass-bg);
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+}
+
+#header-cart-count {
+    color: var(--accent-color);
+    font-weight: 600;
+    margin-left: 4px;
 }
 
 /* Hero Section */

@@ -1,0 +1,62 @@
+---
+interface Props {
+    id: string;
+    name: string;
+    price: number;
+    image: string;
+    class?: string;
+}
+
+const { id, name, price, image, class: className } = Astro.props;
+---
+
+<button 
+    class={`add-to-cart-btn ${className}`}
+    data-product-id={id}
+    data-product-name={name}
+    data-product-price={price}
+    data-product-image={image}
+>
+    ADD TO RITUAL
+</button>
+
+<style>
+    .add-to-cart-btn {
+        background: transparent;
+        color: var(--text-color, #FFF);
+        border: 1px solid var(--text-color, #FFF);
+        padding: 0.6rem 1.5rem;
+        font-family: 'Outfit', sans-serif;
+        font-weight: 400;
+        letter-spacing: 2px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 0.7rem;
+    }
+
+    .add-to-cart-btn:hover {
+        background: var(--text-color, #FFF);
+        color: #000;
+    }
+
+    .add-to-cart-btn:active {
+        transform: scale(0.95);
+    }
+</style>
+
+<script>
+    import { addItem } from '../stores/cartStore';
+
+    document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+        button.addEventListener('click', () => {
+            const btn = button as HTMLButtonElement;
+            const product = {
+                id: btn.dataset.productId!,
+                name: btn.dataset.productName!,
+                price: parseFloat(btn.dataset.productPrice!),
+                image: btn.dataset.productImage!
+            };
+            addItem(product);
+        });
+    });
+</script>

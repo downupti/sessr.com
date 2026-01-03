@@ -2,6 +2,8 @@
 import Layout from '../layouts/Layout.astro';
 import Logo from '../components/Logo.astro';
 import Quiz from '../components/Quiz.astro';
+import CartDrawer from '../components/CartDrawer.astro';
+import AddToCart from '../components/AddToCart.astro';
 ---
 
 <Layout title="SESSR | Premium Cellular Longevity & Bio-tech Skincare">
@@ -17,7 +19,7 @@ import Quiz from '../components/Quiz.astro';
             <li><a href="#genome">THE GENOME</a></li>
         </ul>
         <div class="nav-meta">
-            <a href="#cart" class="cart-link">CART (0)</a>
+            <button id="cart-trigger" class="cart-btn">CART <span id="header-cart-count">(0)</span></button>
         </div>
     </nav>
 
@@ -89,7 +91,12 @@ import Quiz from '../components/Quiz.astro';
                         <p>Exosome-encapsulated peptide complex for 24-hour cellular repair.</p>
                         <div class="product-footer">
                             <span class="price">$320.00</span>
-                            <button class="add-to-cart">ADD</button>
+                            <AddToCart 
+                                id="catalyst-serum" 
+                                name="THE CATALYST" 
+                                price={320} 
+                                image="/assets/SERUM_amber.png"
+                            />
                         </div>
                     </div>
                 </div>
@@ -105,7 +112,12 @@ import Quiz from '../components/Quiz.astro';
                         <p>Digital shield neutralizing oxidative stress from high-energy visible light.</p>
                         <div class="product-footer">
                             <span class="price">$180.00</span>
-                            <button class="add-to-cart">ADD</button>
+                            <AddToCart 
+                                id="blue-light-defense" 
+                                name="BLUE LIGHT DEFENSE" 
+                                price={180} 
+                                image="/assets/CREAM_chrome.png"
+                            />
                         </div>
                     </div>
                 </div>
@@ -121,7 +133,12 @@ import Quiz from '../components/Quiz.astro';
                         <p>Synchronize repair cycles with melatonin derivatives and bio-lipids.</p>
                         <div class="product-footer">
                             <span class="price">$240.00</span>
-                            <button class="add-to-cart">ADD</button>
+                            <AddToCart 
+                                id="circadian-night-oil" 
+                                name="CIRCADIAN NIGHT OIL" 
+                                price={240} 
+                                image="/assets/OIL_frosted.png"
+                            />
                         </div>
                     </div>
                 </div>
@@ -165,4 +182,21 @@ import Quiz from '../components/Quiz.astro';
             <p>&copy; 2024 SESSR BIOTECH. DEFINING CELLULAR LONGEVITY.</p>
         </div>
     </footer>
+    <CartDrawer />
 </Layout>
+
+<script>
+    import { cartItems, toggleCart } from '../stores/cartStore';
+
+    const cartTrigger = document.getElementById('cart-trigger');
+    const headerCount = document.getElementById('header-cart-count');
+
+    cartTrigger?.addEventListener('click', toggleCart);
+
+    cartItems.subscribe(items => {
+        const count = Object.values(items).reduce((acc, item) => acc + item.quantity, 0);
+        if (headerCount) {
+            headerCount.textContent = `(${count})`;
+        }
+    });
+</script>
