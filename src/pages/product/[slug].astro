@@ -1,0 +1,343 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Logo from '../../components/Logo.astro';
+import CartDrawer from '../../components/CartDrawer.astro';
+import AddToCart from '../../components/AddToCart.astro';
+
+export async function getStaticPaths() {
+  const products = [
+    {
+      slug: 'catalyst-serum',
+      name: 'THE CATALYST',
+      tagline: 'Biological Reprogramming & Epigenetic Optimization',
+      price: 320,
+      id: 'catalyst-serum',
+      image: '/assets/SERUM_amber.png',
+      colorClass: 'amber',
+      target: 'Redirection of cellular energy toward DNA repair pathways; 40% increase in SIRT1 expression over 28 days.',
+      foundation: [
+        '15% EXO-PEPTIDE™ Matrix: Bio-mimetic peptides encapsulated in lab-synthesized exosomes.',
+        'Phyto-SIRT1 Activators: Resveratrol and NMN precursors to restabilize mitochondrial function.',
+        'Cross-Linked Hyaluronate-3: Immediate structural plumping and prolonged hydration.'
+      ],
+      ritual: 'A cooling, silk-like amber concentrate that disappears instantly. Designed as the first step after cleansing to prime the genome for subsequent treatments.',
+      packaging: '30ml UV-resistant Amber Glass housed in a weighted titanium-finish flacon.'
+    },
+    {
+      slug: 'blue-light-defense',
+      name: 'BLUE LIGHT DEFENSE',
+      tagline: 'The Environmental Resilience Shield',
+      price: 180,
+      id: 'blue-light-defense',
+      image: '/assets/CREAM_chrome.png',
+      colorClass: 'chrome',
+      target: 'Neutralization of Reactive Oxygen Species (ROS) induced by HEV light; 60% reduction in urban particulate adhesion.',
+      foundation: [
+        'Lutein-Ectoin Molecular Mesh: Dual-action barrier absorbing blue light.',
+        'USP-Grade Niacinamide (5%): Optimizes ceramides and minimizes digital-induced hyperpigmentation.',
+        'Pollution-Block Polymers: Breathable, biocompatible shield against PM2.5 particles.'
+      ],
+      ritual: 'A non-greasy, whipped suspension that creates a matte, "second-skin" finish. Essential for the high-performance professional.',
+      packaging: '50ml heavy-walled, nitrogen-flushed airless pump.'
+    },
+    {
+      slug: 'circadian-night-oil',
+      name: 'CIRCADIAN NIGHT OIL',
+      tagline: 'The Genetic Sync Protocol',
+      price: 240,
+      id: 'circadian-night-oil',
+      image: '/assets/OIL_frosted.png',
+      colorClass: 'frosted',
+      target: 'Restoration of the skin\'s nocturnal repair cycle; increase in ATP production during the delta-sleep phase.',
+      foundation: [
+        'Viatmin A-Bakuchiol Hybrid: Accelerates cell turnover without inflammatory response.',
+        'Melatonin-Signal Peptides: Activate nocturnally-dominant repair genes.',
+        'Bio-Lipid Complex (Ceramides 1, 3, 6-II): Skin-identical ratio of lipids to reconstruct acid mantle.'
+      ],
+      ritual: 'A dense, velvet-gold oil that anchors the evening routine. Natural scent of Sea Buckthorn promotes a physiological shift toward rest.',
+      packaging: '30ml thick-walled frosted glass with a precision-weighted pipette.'
+    }
+  ];
+
+  return products.map((product) => ({
+    params: { slug: product.slug },
+    props: { product },
+  }));
+}
+
+const { product } = Astro.props;
+---
+
+<Layout title={`${product.name} | SESSR Longevity`}>
+    <div class="noise-overlay"></div>
+
+    <nav>
+        <div class="logo">
+            <a href="/" style="text-decoration: none; color: inherit;"><Logo height="50px" /></a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/#science">SCIENCE</a></li>
+            <li><a href="/#shop">SHOP</a></li>
+            <li><a href="/#genome">THE GENOME</a></li>
+        </ul>
+        <div class="nav-meta">
+            <button id="cart-trigger" class="cart-btn">CART <span id="header-cart-count">(0)</span></button>
+        </div>
+    </nav>
+
+    <main class="product-detail-page">
+        <section class="product-hero">
+            <div class="product-hero-info">
+                <span class="eyebrow">SESSR FORMULATION</span>
+                <h1>{product.name}</h1>
+                <p class="product-tagline">{product.tagline}</p>
+                <div class="product-main-actions">
+                    <span class="price">${product.price.toFixed(2)}</span>
+                    <AddToCart 
+                        id={product.id} 
+                        name={product.name} 
+                        price={product.price} 
+                        image={product.image}
+                    />
+                </div>
+            </div>
+            
+            <div class="product-hero-visual">
+                <div class="visual-container">
+                    <div class={`bottle ${product.colorClass} large`}>
+                        <div class="bottle-label">SESSR</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="product-specs">
+            <div class="spec-grid">
+                <div class="spec-item">
+                    <h3>CLINICAL TARGET</h3>
+                    <p>{product.target}</p>
+                </div>
+                
+                <div class="spec-item">
+                    <h3>SCIENTIFIC FOUNDATION</h3>
+                    <ul class="foundation-list">
+                        {product.foundation.map((fact) => (
+                            <li>{fact}</li>
+                        ))}
+                    </ul>
+                </div>
+
+                <div class="spec-item">
+                    <h3>THE RITUAL</h3>
+                    <p>{product.ritual}</p>
+                </div>
+
+                <div class="spec-item">
+                    <h3>PACKAGING</h3>
+                    <p>{product.packaging}</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="exo-tech-callout">
+             <div class="section-header center">
+                <span class="eyebrow">CORE TECHNOLOGY</span>
+                <h2>EXO-TECH™ DELIVERY</h2>
+                <p style="color: var(--secondary-color); max-width: 800px; margin: 2rem auto;">
+                    Unlike traditional skincare that sits on the surface, EXO-TECH™ uses lab-synthesized exosomes that mimic the skin's natural communication vesicles. This allows high-molecular-weight actives to pass through the stratum corneum unnoticed by the skin's defense mechanisms.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="logo">
+                     <a href="/" style="text-decoration: none; color: inherit;"><Logo height="50px" /></a>
+                </div>
+                <p>The Future of Skin, Preserved.</p>
+            </div>
+            <div class="footer-links">
+                <div class="link-group">
+                    <h4>SHOP</h4>
+                    <a href="/product/catalyst-serum">The Catalyst</a>
+                    <a href="/product/blue-light-defense">Blue Light Defense</a>
+                    <a href="/product/circadian-night-oil">Circadian Night Oil</a>
+                </div>
+                <div class="link-group">
+                    <h4>ABOUT</h4>
+                    <a href="#">Our Story</a>
+                    <a href="#">Clinical Trials</a>
+                    <a href="#">Careers</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 SESSR BIOTECH. DEFINING CELLULAR LONGEVITY.</p>
+        </div>
+    </footer>
+
+    <CartDrawer />
+</Layout>
+
+<style>
+    .product-detail-page {
+        padding-top: 100px;
+    }
+
+    .product-hero {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr;
+        padding: 5rem 5% 10rem;
+        gap: 5%;
+        align-items: center;
+        min-height: 80vh;
+    }
+
+    .product-hero-info h1 {
+        font-size: clamp(3rem, 6vw, 5rem);
+        margin-bottom: 1rem;
+    }
+
+    .product-tagline {
+        font-family: var(--serif-font);
+        font-style: italic;
+        font-size: 1.8rem;
+        color: var(--secondary-color);
+        margin-bottom: 3rem;
+        max-width: 600px;
+    }
+
+    .product-main-actions {
+        display: flex;
+        align-items: center;
+        gap: 3rem;
+        margin-top: 4rem;
+    }
+
+    .product-main-actions .price {
+        font-family: var(--serif-font);
+        font-size: 2.5rem;
+    }
+
+    .product-hero-visual {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+
+    .bottle.large {
+        width: 140px;
+        height: 380px;
+        box-shadow: 0 0 100px rgba(0,0,0,0.5), 0 0 50px var(--accent-glow);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid var(--glass-border);
+    }
+
+    .bottle-label {
+        font-size: 0.8rem;
+        letter-spacing: 5px;
+        font-weight: 600;
+        transform: rotate(90deg);
+        color: rgba(255,255,255,0.3);
+    }
+
+    .product-specs {
+        background: #0f0f0f;
+        padding: 10rem 10%;
+        border-top: 1px solid var(--glass-border);
+        border-bottom: 1px solid var(--glass-border);
+    }
+
+    .spec-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 5rem 10%;
+    }
+
+    .spec-item h3 {
+        font-size: 0.8rem;
+        letter-spacing: 3px;
+        color: var(--accent-color);
+        margin-bottom: 1.5rem;
+    }
+
+    .spec-item p, .spec-item li {
+        color: var(--secondary-color);
+        font-size: 1.1rem;
+        font-weight: 300;
+        line-height: 1.8;
+    }
+
+    .foundation-list {
+        list-style: none;
+    }
+
+    .foundation-list li {
+        margin-bottom: 1rem;
+        position: relative;
+        padding-left: 2rem;
+    }
+
+    .foundation-list li::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0.7rem;
+        width: 6px;
+        height: 6px;
+        background: var(--accent-color);
+        border-radius: 50%;
+    }
+
+    .exo-tech-callout {
+        padding: 10rem 10%;
+    }
+
+    @media (max-width: 968px) {
+        .product-hero {
+            grid-template-columns: 1fr;
+            text-align: center;
+            padding-bottom: 5rem;
+        }
+
+        .product-hero-info {
+            order: 2;
+        }
+
+        .product-hero-visual {
+            order: 1;
+            margin-bottom: 4rem;
+        }
+
+        .product-main-actions {
+            justify-content: center;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .spec-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<script>
+    import { cartItems, toggleCart } from '../../stores/cartStore';
+
+    const cartTrigger = document.getElementById('cart-trigger');
+    const headerCount = document.getElementById('header-cart-count');
+
+    cartTrigger?.addEventListener('click', toggleCart);
+
+    cartItems.subscribe(items => {
+        const count = Object.values(items).reduce((acc, item) => acc + item.quantity, 0);
+        if (headerCount) {
+            headerCount.textContent = `(${count})`;
+        }
+    });
+</script>
