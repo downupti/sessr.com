@@ -1,8 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Logo from '../components/Logo.astro';
-import CartDrawer from '../components/CartDrawer.astro';
-import AddToCart from '../components/AddToCart.astro';
 ---
 
 <Layout title="SESSR | Premium Cellular Longevity & Bio-tech Skincare">
@@ -16,28 +14,22 @@ import AddToCart from '../components/AddToCart.astro';
             <li><a href="#science">SCIENCE</a></li>
             <li><a href="#product">THE PROTECTOR</a></li>
         </ul>
-        <div class="nav-meta">
-            <button id="cart-trigger" class="cart-btn">CART <span id="header-cart-count">(0)</span></button>
-        </div>
     </nav>
 
     <main>
         <section class="hero" id="home">
             <div class="hero-content">
                 <span class="eyebrow">MOLECULAR PROTECTION SINCE 1973</span>
-                <h1>THE SHIELD FOR<br><span class="italic">DIGITAL LIVES.</span></h1>
-                <p>We’ve been the silent innovators behind world-class brands since 1973. Now, we bring you the ultimate protector against the blue light age.</p>
+                <h1>BLUE LIGHT IS THE<br><span class="italic">NEW UV.</span></h1>
+                <p>We've been silent innovators since 1973. Now, we've engineered the ultimate protector for the digital age—specifically designed to shield facial skin from debilitating smartphone and laptop blue light.</p>
                 <div class="hero-actions">
-                    <button class="cta-button primary">GET THE SHIELD</button>
-                    <button class="cta-button secondary">THE SCIENCE</button>
+                    <a href="https://buy.stripe.com/placeholder" class="cta-button primary">BUY NOW — $180</a>
+                    <a href="#science" class="cta-button secondary">VIEW THE SCIENCE</a>
                 </div>
             </div>
             <div class="hero-visual">
                 <div class="visual-container">
-                    <div class="droplet-container">
-                        <div class="droplet"></div>
-                        <div class="droplet-glow"></div>
-                    </div>
+                    <img src="/assets/blue_light_defense_hero.png" alt="Blue Light Defense" class="hero-product-img" />
                 </div>
             </div>
             <div class="scroll-indicator">
@@ -76,25 +68,17 @@ import AddToCart from '../components/AddToCart.astro';
                 <h2>BLUE LIGHT DEFENSE</h2>
             </div>
             <div class="product-grid" style="display: flex; justify-content: center;">
-                <!-- Blue Light Defense -->
-                <div class="product-card" style="max-width: 400px;">
-                    <a href="/product/blue-light-defense" class="product-link">
-                        <div class="product-image">
-                            <div class="bottle chrome"></div>
-                        </div>
-                    </a>
+                <div class="product-card" style="max-width: 500px;">
+                    <div class="product-image">
+                         <img src="/assets/blue_light_defense_hero.png" alt="Blue Light Defense Bottle" />
+                    </div>
                     <div class="product-info">
                         <span class="tag">THE ORIGINAL</span>
-                        <a href="/product/blue-light-defense"><h3>BLUE LIGHT DEFENSE</h3></a>
-                        <p>A specialized skin moisturizer protector against the blue light from laptops and smartphones.</p>
+                        <h3>BLUE LIGHT DEFENSE</h3>
+                        <p>A specialized molecular shield designed to neutralize HEV light from digital screens and reinforce the skin's lipid barrier.</p>
                         <div class="product-footer">
                             <span class="price">$180.00</span>
-                            <AddToCart 
-                                id="blue-light-defense" 
-                                name="BLUE LIGHT DEFENSE" 
-                                price={180} 
-                                image="/assets/CREAM_chrome.png"
-                            />
+                            <a href="https://buy.stripe.com/placeholder" class="buy-now-btn">DIRECT CHECKOUT</a>
                         </div>
                     </div>
                 </div>
@@ -128,21 +112,8 @@ import AddToCart from '../components/AddToCart.astro';
             <p>&copy; 2024 SESSR BIOTECH. DEFINING CELLULAR LONGEVITY.</p>
         </div>
     </footer>
-    <CartDrawer />
 </Layout>
 
 <script>
-    import { cartItems, toggleCart } from '../stores/cartStore';
-
-    const cartTrigger = document.getElementById('cart-trigger');
-    const headerCount = document.getElementById('header-cart-count');
-
-    cartTrigger?.addEventListener('click', toggleCart);
-
-    cartItems.subscribe(items => {
-        const count = Object.values(items).reduce((acc, item) => acc + item.quantity, 0);
-        if (headerCount) {
-            headerCount.textContent = `(${count})`;
-        }
-    });
+    // Lean Launch: Cart logic disabled for direct checkout flow.
 </script>

@@ -201,10 +201,26 @@ h1 {
     align-items: center;
 }
 
-.droplet-container {
+.visual-container {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    display: flex;
+    justify-content: center;
     position: relative;
-    width: 200px;
-    height: 300px;
+}
+
+.hero-product-img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 0 50px rgba(0, 150, 255, 0.2));
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
 }
 
 .droplet {
@@ -449,20 +465,24 @@ h1 {
     font-size: 1.4rem;
 }
 
-.add-to-cart {
-    background: transparent;
-    color: var(--text-color);
-    border: 1px solid var(--text-color);
-    padding: 0.6rem 1.5rem;
-    font-size: 0.7rem;
-    letter-spacing: 2px;
-    cursor: pointer;
-    transition: all 0.3s;
-}
-
-.add-to-cart:hover {
+.buy-now-btn {
     background: var(--text-color);
     color: var(--bg-color);
+    text-decoration: none;
+    border: 1px solid var(--text-color);
+    padding: 0.8rem 2rem;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    display: inline-block;
+}
+
+.buy-now-btn:hover {
+    background: transparent;
+    color: var(--text-color);
+    transform: scale(1.05);
 }
 
 /* Footer */
